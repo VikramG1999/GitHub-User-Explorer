@@ -1,0 +1,32 @@
+body {
+  background-color: #0d1117;
+  min-height: 100vh;
+}
+
+.github-card {
+  background-color: #161b22;
+  color: #e6edf3;
+  border: 1px solid #30363d;
+  width: 400px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.profile-img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  margin: 20px auto;
+  object-fit: cover;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.stats p {
+  margin: 0;
+  font-size: 14px;
+}
