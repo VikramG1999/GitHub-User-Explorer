@@ -4,27 +4,45 @@ const User = ({ username }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [notFound, setNotFound] = useState(false);
+  const [usingBackup, setUsingBackup] = useState(false);
 
   useEffect(() => {
-    if (!username) return;
+    if (!username) {
+      setUser(null);
+      return;
+    }
 
     const getUser = async () => {
       try {
         setLoading(true);
         setNotFound(false);
+        setUsingBackup(false);
 
         const response = await fetch(
           `https://api.github.com/users/${username}`
         );
 
-        const data = await response.json();
-
-        if (data.message === "Not Found") {
+        // Username not found
+        if (response.status === 404) {
           setNotFound(true);
           setUser(null);
-        } else {
-          setUser(data);
+          return;
         }
+
+        // GitHub API rate limit exceeded
+        if (response.status === 403) {
+          const backup = await fetch(`${import.meta.env.BASE_URL}user.json`);
+          const backupData = await backup.json();
+
+          setUsingBackup(true);
+          setUser(backupData);
+
+          return;
+        }
+
+        const data = await response.json();
+        setUser(data);
+
       } catch (error) {
         console.log(error);
       } finally {
@@ -64,6 +82,11 @@ const User = ({ username }) => {
         />
 
         <div className="card-body text-center">
+          {usingBackup && (
+            <div className="alert alert-warning py-2 mb-3">
+              ⚠ GitHub API rate limit reached. Showing offline backup profile.
+            </div>
+          )}
 
           <h3>{user.name}</h3>
 

@@ -2,14 +2,15 @@ import { useState } from "react";
 import User from "./User";
 
 const SearchUser = () => {
+  const [input, setInput] = useState("");
   const [username, setUsername] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!username.trim()) {
-      return;
-    }
+    if (!input.trim()) return;
+
+    setUsername(input.trim());
   };
 
   return (
@@ -20,21 +21,27 @@ const SearchUser = () => {
 
       <form onSubmit={handleSubmit}>
         <div className="input-group mb-4">
+
           <input
             type="text"
             className="form-control"
             placeholder="Enter GitHub Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
           />
 
-          <button className="btn btn-success" type="submit">
+          <button
+            className="btn btn-success"
+            type="submit"
+          >
             Search
           </button>
+
         </div>
       </form>
 
       <User username={username} />
+
     </div>
   );
 };
