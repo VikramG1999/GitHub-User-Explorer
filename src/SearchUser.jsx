@@ -15,32 +15,68 @@ const SearchUser = () => {
 
   return (
     <div className="container py-5">
-      <h1 className="text-center text-light mb-4">
-        GitHub User Explorer
-      </h1>
 
-      <form onSubmit={handleSubmit}>
-        <div className="input-group mb-4">
+      {/* Header */}
 
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Enter GitHub Username"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          />
+      <div className="text-center mb-5">
 
-          <button
-            className="btn btn-success"
-            type="submit"
-          >
-            Search
-          </button>
+        <i
+          className="bi bi-github text-white"
+          style={{ fontSize: "70px" }}
+        ></i>
+
+        <h1 className="display-4 fw-bold text-white mt-3">
+          GitHub User Explorer
+        </h1>
+
+        <p className="lead text-secondary">
+          Search and explore any public GitHub profile
+        </p>
+
+      </div>
+
+      {/* Search Box */}
+
+      <div className="row justify-content-center">
+
+        <div className="col-lg-8">
+
+          <form onSubmit={handleSubmit}>
+
+            <div className="input-group input-group-lg shadow">
+
+              <span className="input-group-text bg-dark border-secondary text-light">
+
+                <i className="bi bi-search"></i>
+
+              </span>
+
+              <input
+                type="text"
+                className="form-control bg-dark text-white border-secondary"
+                placeholder="Enter GitHub Username..."
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+              />
+
+              <button
+                className="btn btn-success px-4 fw-bold"
+                type="submit"
+              >
+                Search
+              </button>
+
+            </div>
+
+          </form>
 
         </div>
-      </form>
 
-      <User username={username} />
+      </div>
+
+      <div className="mt-5">
+        <User username={username} />
+      </div>
 
     </div>
   );

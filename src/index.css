@@ -1,32 +1,115 @@
+/* Background */
+
 body {
-  background-color: #0d1117;
+  background: linear-gradient(135deg, #0d1117, #161b22);
   min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.github-card {
-  background-color: #161b22;
-  color: #e6edf3;
-  border: 1px solid #30363d;
-  width: 400px;
-  border-radius: 15px;
-  overflow: hidden;
+/* Input */
+
+.form-control {
+  background: #161b22 !important;
+  color: white !important;
+  border: 1px solid #30363d !important;
 }
 
-.profile-img {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  margin: 20px auto;
-  object-fit: cover;
+.form-control::placeholder {
+  color: #8b949e;
 }
 
-.stats {
-  display: flex;
-  justify-content: space-around;
-  margin: 20px 0;
+.form-control:focus {
+  background: #161b22 !important;
+  color: white !important;
+  border-color: #238636 !important;
+  box-shadow: 0 0 12px rgba(35, 134, 54, .4) !important;
 }
 
-.stats p {
-  margin: 0;
-  font-size: 14px;
+/* Search Icon */
+
+.input-group-text {
+  background: #161b22 !important;
+  color: white !important;
+  border: 1px solid #30363d !important;
+}
+
+/* Main Card */
+
+.card {
+  transition: all .35s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+/* Profile Image */
+
+.rounded-circle {
+  transition: .4s;
+}
+
+.rounded-circle:hover {
+  transform: scale(1.08);
+}
+
+/* Stats Card */
+
+.bg-black {
+  background: #0d1117 !important;
+}
+
+.bg-black:hover {
+  background: #161b22 !important;
+}
+
+/* Button */
+
+.btn-success {
+  transition: .3s;
+}
+
+.btn-success:hover {
+  transform: translateY(-3px);
+}
+
+/* Links */
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Divider */
+
+hr {
+  border-color: #30363d;
+}
+
+/* Alert */
+
+.alert {
+  border-radius: 12px;
+}
+
+/* Responsive */
+
+@media (max-width:768px){
+
+  h1{
+    font-size:2rem !important;
+  }
+
+  .card-body{
+    padding:25px !important;
+  }
+
+  .rounded-circle{
+    width:140px !important;
+    height:140px !important;
+  }
+
 }
